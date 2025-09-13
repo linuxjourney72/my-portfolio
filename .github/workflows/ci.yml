@@ -1,0 +1,31 @@
+
+
+name: CI
+
+
+on:
+
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+ 
+  workflow_dispatch:
+
+
+jobs:
+ 
+  build:
+    
+    runs-on: ubuntu-latest
+
+    
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t nickp5702/portfolio .
+      - name: Push image
+        run: |
+            docker login -u nickp5702 -p ${{secrets.REGISTRY_PASS}}
+            docker push nickp5702/portfolio
