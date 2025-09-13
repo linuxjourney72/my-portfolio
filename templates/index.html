@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title> Serge Smith - DevOps Portfolio</title>
-    
+
     <!-- PWA Support -->
     <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="John Doe Portfolio">
-    
+
     <!-- Font Preloading -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        as="style">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-    
+
     <style>
         :root {
             --primary: #4cc9f0;
@@ -27,7 +29,7 @@
             --card-bg: rgba(255, 255, 255, 0.05);
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
-        
+
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, var(--dark), var(--darker));
@@ -233,8 +235,15 @@
 
         /* Animations */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .container {
@@ -246,19 +255,19 @@
             .container {
                 padding: 1.5rem 1rem;
             }
-            
+
             .header {
                 padding: 1.5rem;
             }
-            
+
             h1 {
                 font-size: 2.2rem;
             }
-            
+
             .section {
                 padding: 1.5rem;
             }
-            
+
             .experience-header {
                 flex-direction: column;
                 align-items: flex-start;
@@ -271,15 +280,18 @@
 <body>
     <div class="container">
         <header class="header">
-            <h1>John Doe</h1>
+            <h1>Dominick Peoples</h1>
             <p>DevOps Engineer</p>
-            <p>john.doe@example.com</p>
-            <p>Total Experience: 8+ Years</p>
+            <p>pehome01@gmail.com</p>
+            <p>Total Experience: 5+ Years</p>
         </header>
 
         <section class="section summary">
             <h2>Professional Summary</h2>
-            <p>Experienced DevOps Engineer with over 8 years in automating, optimizing, and managing cloud infrastructure. Proficient in Docker, Kubernetes, AWS, Terraform, and bash scripting, with a proven track record of implementing CI/CD pipelines and container orchestration. Skilled in Linux server administration and infrastructure as code, delivering scalable and secure solutions.</p>
+            <p>Experienced DevOps Engineer with over 8 years in automating, optimizing, and managing cloud
+                infrastructure. Proficient in Docker, Kubernetes, AWS, Terraform, and bash scripting, with a proven
+                track record of implementing CI/CD pipelines and container orchestration. Skilled in Linux server
+                administration and infrastructure as code, delivering scalable and secure solutions.</p>
         </section>
 
         <section class="section">
@@ -333,7 +345,7 @@
                     <li>Implemented CI/CD pipelines with GitHub Actions for zero-downtime deployments</li>
                 </ul>
             </article>
-            
+
             <article class="experience-item">
                 <div class="experience-header">
                     <div class="experience-title">CloudWave Solutions - Cloud Engineer</div>
@@ -354,11 +366,15 @@
             <h2>Projects</h2>
             <article class="project-item">
                 <strong>CI/CD Pipeline</strong>
-                <p>Built an automated deployment system using Jenkins, Docker, and bash scripts. Integrated with AWS CodePipeline for zero-downtime deployments. Automated the build, test, and deployment process for microservices architecture.</p>
+                <p>Built an automated deployment system using Jenkins, Docker, and bash scripts. Integrated with AWS
+                    CodePipeline for zero-downtime deployments. Automated the build, test, and deployment process for
+                    microservices architecture.</p>
             </article>
             <article class="project-item">
                 <strong>Container Orchestration</strong>
-                <p>Implemented Kubernetes clusters on AWS EKS using Terraform for infrastructure provisioning. Wrote bash scripts to automate scaling and monitoring of pods. Configured Linux nodes for optimal performance with Docker runtime.</p>
+                <p>Implemented Kubernetes clusters on AWS EKS using Terraform for infrastructure provisioning. Wrote
+                    bash scripts to automate scaling and monitoring of pods. Configured Linux nodes for optimal
+                    performance with Docker runtime.</p>
             </article>
         </section>
 
@@ -367,4 +383,5 @@
         </footer>
     </div>
 </body>
+
 </html>
