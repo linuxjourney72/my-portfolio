@@ -35,11 +35,28 @@ jobs:
             - name: Configure AWS credentials using OIDC
               uses: aws-actions/configure-aws-credentials@v2
               with:
-                role-to-assume: arn:aws:iam::$ACCOUNT_ID:role/GitHubOIDCRole
+                role-to-assume: ${{ secrets.ROLE_ARN }}
                 aws-region: ${{ env.AWS_REGION }}
 
-            - name: check credentials
-              run: aws s3 ls
+            - name: Login to Amazon ECR
+              id: login-ecr
+              uses: aws-actions/amazon-ecr-login@v1
+            - name: Build Docker image
+              run: | 
+                docker build -t ${{ env.IMAGE_NAME }} .
 
-           # - name: build image
-            #  run: docker build -t linuxjourney72/portcicd .
+            - name: Tag Docker image
+              run: |
+                docker tag ${{ env.IMAGE_NAME }}:latest ${{ env.ECR_REPO }}
+
+            - name: Scan Docker image with Trivy
+              uses: aquasecurity/trivy-action@master
+              with:
+                 image-ref: ${{ env.ECR_REPO }}:latest
+                 format: table
+                 exit-code: '1'
+                 severity: CRITICAL,HIGH
+
+            - name: Push Docker image to Amazon ECR
+              run: | 
+                docker push ${{ env.ECR_REPO }}:latest
