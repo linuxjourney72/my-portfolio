@@ -1,0 +1,45 @@
+name: CI
+
+
+on:
+
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+      id-token: write
+      contents: read
+
+env:
+  python_version: 3.11
+  IMAGE_NAME: portfolio
+  AWS_REGION: us-east-1 
+  ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
+  ECR_REPO: $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_NAME
+
+jobs: 
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-python@v4
+              with:
+                python-version: $python_version  # or $python_version
+
+            - name: install pytest
+              run: pip install -r requirements.txt
+            - name: unit test
+              run: pytest test.py
+            - name: Configure AWS credentials using OIDC
+              uses: aws-actions/configure-aws-credentials@v2
+              with:
+                role-to-assume: arn:aws:iam::$ACCOUNT_ID:role/GitHubOIDCRole
+                aws-region: ${{ env.AWS_REGION }}
+
+            - name: check credentials
+              run: aws s3 ls
+
+           # - name: build image
+            #  run: docker build -t linuxjourney72/portcicd .
