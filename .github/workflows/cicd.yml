@@ -47,7 +47,7 @@ jobs:
 
             - name: Tag Docker image
               run: |
-                docker tag ${{ env.IMAGE_NAME }}:latest ${{ env.ECR_REPO }}
+                docker tag ${{ env.IMAGE_NAME }}:latest ${{ env.ECR_REPO }}:latest
 
             - name: Scan Docker image with Trivy
               uses: aquasecurity/trivy-action@master
